@@ -1,0 +1,150 @@
+﻿---------------------------------
+
+版本：V1.13
+日期：2014/12/26
+修改人：董孔明/蒋捷
+
+修改内容：
+1、新增云磁盘接口：
+query_device
+create_device
+delete_device
+modify_device
+
+2、新增存储资源池接口：
+query_storage_pool 
+create_storage_pool 
+delete_storage_pool 
+add_storage_resource 
+remove_storage_resource 
+query_storage_resource 
+start_monitor 
+stop_monitor 
+monitor_heart_beat
+monitor_data
+
+---------------------------------
+版本：V1.11
+日期：2014/08/19
+修改人：董孔明
+
+修改内容：
+1、修改intelligent_router中task参数；
+2、query_host 增加CPU/memory/disk利用率的显示；
+3、修改query_host_info中关于network status的定义；
+4、修改modify_host，增加name选项，修改必须参数为仅id；
+5、修改host_host_info显示选项，采用list；
+
+---------------------------------
+版本：V1.10
+日期：2014/08/15
+修改人：董孔明，蒋捷
+
+修改内容：
+1、修改添加主机资源池create_compute_pool；
+2、增加修改主机资源池和删除主机资源池接口。
+	delete_compute_pool：删除主机资源池；
+	modify_compute_pool：修改主机资源池；
+3、增加域名绑定接口：
+	bind_domain ：绑定；
+	unbind_domain ：解绑；
+	query_domain_summary ：查询概况；
+	query_domain_name ：查询清单；
+	get_bound_domain ：读取配置；
+
+4、增加负载均衡接口：
+	query_balancer_detail：查询详情；
+	query_load_balancer:查询清单；
+	query_balancer_summary：查询概况；
+5、增加主机转发器接口：
+	add_forwarder：主机添加转发器；
+	remove_forwarder：主机移除转发器；
+
+6、add_address_resource修改传入的ip/range类型为数组；
+
+7、新增负载均衡已下接口：
+	disable_load_balancer ：禁用负载均衡
+	delete_load_balancer ：删除负载均衡
+	attach_address ：添加IP
+	detach_address ：删除IP
+	get_load_balancer ：读取配置
+	create_load_balancer ：创建负载均衡
+	add_balancer_node ：添加节点；
+	remove_balancer_node ：移除节点；
+	modify_balancer_node ：修改节点；
+	nable_load_balancer ：启动节点。
+
+---------------------------------
+版本：V1.09
+日期：2014/08/11
+修改人：蒋捷
+
+修改内容：
+1、修改查询类状态显示，由数字显示具体的值；
+2、增加了create_storage_pool以及modify_storage_pool接口；
+3、创建主机creat_host响应，增加了对应的公网端口
+4、修改云主机modify_host响应，增加了对应的公网端口
+5、查询云主机配置query_host_info,增加了转发器、网络地址池、存储池等信息
+
+
+---------------------------------
+版本：V1.08
+日期：2014/07/30
+修改人：董孔明
+
+修改内容：
+1、增加IP资源池接口；
+2、增加端口资源池接口。
+3、增加主机转发接口。
+
+---------------------------------
+
+版本：V1.07
+日期：2014/07/22
+修改人：董孔明
+
+修改内容：
+1、增加query_host_info接口；
+2、修改leave后，case manager处理
+
+---------------------------------
+版本：V1.06
+日期：2014/07/20
+修改人：董孔明
+
+修改内容：
+1、修改命令的参数定义，简化参数；
+2、修改zctool的cmd类，关闭时停止service，清空线程；
+3、修改查询ISO大小的格式显示（bit-MBit）；
+4、修改执行命令异常的处理，只显示失败，进入异常，不自动退出；
+5、修改help命令显示类容和路径处理，适合windows以及linux；
+6、替换最新消息定义，更换node_client、control service、storage service版本；
+
+---------------------------------
+版本：V1.05
+日期：2014/07/18
+修改人：董孔明
+
+修改内容：
+1、修改创建主机带宽值，单位为bit，2M带宽 inbound/outbound=2*1024*1024bit；
+2、修改主机命令参数名称，与其他命令一致；
+
+---------------------------------
+版本：V1.04
+日期：2014/07/17
+修改人：董孔明
+
+修改内容：
+1、修改创建主机初始值，默认70修改为0；
+2、修改查询主机以及修改主机带宽单位；
+---------------------------------
+版本：V1.03
+日期：2014/07/16
+修改人：董孔明
+
+修改内容：
+1、修改查询类命令显示格式，以列显示；
+2、修改创建主机带宽值，带宽*128计算；
+3、修改whisper版本，增加tmp路径参数；
+
+---------------------------------
