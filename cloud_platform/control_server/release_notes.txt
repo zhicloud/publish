@@ -1,4 +1,161 @@
-﻿
+﻿版本号：control_server2.0#20150503-1
+
+主要变更：
+	1、修复cs跟ir forwarder不一致的bug
+
+********************************
+
+版本号：control_server2.0#20150430-1
+
+主要变更：
+	1、解决以下bug：
+	Traceback (most recent call last):
+	  File"/tmp/control_server/build/control_server/out00-PYZ.pyz/control_service",line 316, in handleEventMessage
+	  File"/tmp/control_server/build/control_server/out00-PYZ.pyz/control_service",line 656, in handleTimeout
+	  File"/tmp/control_server/build/control_server/out00-PYZ.pyz/control_service",line 1008, in handleMonitorTimeout
+	  File"/tmp/control_server/build/control_server/out00-PYZ.pyz/control_service",line 1353, in notifyHostMonitorData
+	AttributeError: 'NoneType' object has no attribute 'uuid'
+	
+********************************
+
+版本号：control_server2.0#20150429-2
+
+主要变更：
+	1、修改query_host的返回数据：返回参数ip的意义修改为 [宿主机ip, 公网ip或vpc ip]
+	2、修复bug：当云主机既没有公网ip也没有vpc ip时，query_host_info返回参数ip为[宿主机ip,""],返回参数port为[宿主机端口，""]
+
+********************************
+
+版本号：control_server2.0#20150429-1
+
+主要变更：
+	1、attach_host增加返回数据：返回云主机加入vpc之后分配的vpc ip
+	2、query_network_host增加返回数据：返回云主机的vpc ip
+	3、修改query_host_info的返回数据：返回参数ip的意义修改为 [宿主机ip, 公网ip或vpc ip]
+
+********************************
+
+版本号：control_server2.0#20150427-1
+
+主要变更：
+	1、修复创建云主机时在内存分配算法和磁盘分配算法不准确的bug。
+	2、为云主机增加'是否允许本地备份'和'是否允许扩展usb'属性。
+
+********************************
+
+版本号：control_server2.0#20150424-1
+
+主要变更：
+	1、修复创建云主机时为云主机分配内存的算法计算不准确的bug。
+
+********************************
+
+版本号：control_server2.0#20150423-1
+
+主要变更：
+	1、创建计算资源池时，增加检测地址资源池或端口资源池（即network参数）的有效性
+	2、删除地址资源池时，增加校验资源池是否在被计算资源池或vpc使用
+	3、删除端口资源池时，增加校验资源池是否被计算资源池使用
+
+********************************
+
+版本号：control_server2.0#20150422-1
+
+主要变更：
+	1、修复ir后台不断报：ValueError: invalid literal for int() with base 10: '' 的bug。
+	2、修复在云主机创建不成功的时候forwarder没有清除的bug。
+
+********************************
+
+版本号：control_server2.0#20150421-1
+
+主要变更：
+	1、修复：TypeError: not all arguments converted during string formatting
+
+********************************
+
+版本号：control_server2.0#20150420-1
+
+主要变更：
+	1、修复vpc模式的云主机访问外网时没有snat成对应的公网ip的bug。
+
+********************************
+
+版本号：control_server2.0#20150416-1
+
+主要变更：
+	1、调整了cs、nc、ir之间内部通信的接口
+	2、nc的配置文件host.conf内针对host的属性network和vpc_network合并为一个属性network
+
+********************************
+
+版本号：control_server2.0#20150415-1
+
+主要变更：
+	1、实现了vpc的所有功能
+
+********************************
+
+版本号：control_server2.0#20150302-1
+
+主要变更：
+	1、修复port_resource的allocate方法在分配端口时有时会出现分配结果不正常的bug。
+	2、修复以下bug：
+		2015-03-02 10:19:23,905 [ERROR] <ControlService>handle event exception, event 19[00000004], sender 'control_server_60eb69ed9722', messasge:("'HostForwarder' object has no attribute 'server_port'",)
+			Traceback (most recent call last):
+			  File "/home/zhicloud/src/control_server/build/control_server/out00-PYZ.pyz/control_service", line 317, in handleEventMessage
+			  File "/home/zhicloud/src/control_server/build/control_server/out00-PYZ.pyz/control_service", line 620, in handleTimeout
+			  File "/home/zhicloud/src/control_server/build/control_server/out00-PYZ.pyz/control_service", line 631, in handleSynchronizeTimeout
+			  File "/home/zhicloud/src/control_server/build/control_server/out00-PYZ.pyz/control_service", line 636, in synchronizeData
+			  File "/home/zhicloud/src/control_server/build/control_server/out00-PYZ.pyz/forwarder_manager", line 60, in save
+			AttributeError: 'HostForwarder' object has no attribute 'server_port'
+	
+********************************
+
+版本号：control_server2.0#20150206-1
+
+主要变更：
+	1、修复deallocate public port时，没有将释放的端口保存进文件的bug，该bug会导致一些公网端口一直无法被释放。
+	2、修复创建云主机时申请的公网端口多出一倍的bug，该bug会导致多申请出的公网端口一直无法释放。
+	
+********************************
+
+版本号：control_server2.0#20150205-1
+
+主要变更：
+	1、修复云主机删除时公网端口没有收回的bug。
+	2、修复同一个公网端口被重复使用的bug。
+	3、修复forwarder的output_port_range为空时，signature计算报错的问题
+	
+********************************
+
+版本号：control_server2.0#20150204-1
+
+主要变更：
+	1、修复后台不断报resume 1 port(s) with public ip '1.1.1.96' into address pool 'c8bce8010d934d60a03bedf8fa42e4e6'的bug。
+	
+********************************
+
+版本号：control_server2.0#20150202-1
+
+主要变更：
+	1、增加云主机端口共享模式的功能。
+	
+********************************
+
+版本号：control_server2.0#20150115-1
+
+主要变更：
+	1、修复后台报AttributeError: 'InitialNodeTask' object has no attribute 'pool_manager'的bug。
+	2、修复云主机的网络类型为shared时修改云主机开放端口不成功的bug。
+	
+********************************
+
+版本号：control_server2.0#20150113-1
+
+主要变更：
+	1、修复add_port_resource接口添加资源不成功的bug。
+	
 ********************************
 
 版本号：2.0#20150106-1
